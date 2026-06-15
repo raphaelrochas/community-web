@@ -1,5 +1,5 @@
 import { API_URL } from "../../config"
-import type { MessageDTOResp, RoomDTOResp, CreateRoomDTO} from "../type/chat"
+import type { MessageDTOResp, RoomDTOResp, CreateRoomDTO, JoinRoomDTO} from "../type/chat"
 
 export async function createRoom(input: CreateRoomDTO): Promise<RoomDTOResp> {
     const res = await fetch(`${API_URL}/room/create`, {
@@ -17,12 +17,12 @@ export async function createRoom(input: CreateRoomDTO): Promise<RoomDTOResp> {
     return res.json()
 }
 
-export async function joinRoom(roomID: string): Promise<RoomDTOResp> {
-    const res = await fetch(`${API_URL}/room/join/${roomID}`, {
-        method: "POST",
+export async function joinRoom(input: JoinRoomDTO): Promise<RoomDTOResp> {
+    const res = await fetch(`${API_URL}/room/join`, {
+        method: "PATCH",
         headers: {"Content-Type": "application/json"},
         credentials: "include",
-        body: JSON.stringify(roomID),
+        body: JSON.stringify(input)
     })
 
     if (!res.ok) {
@@ -78,5 +78,5 @@ export async function getMessage(roomID: string, offset: number): Promise<Messag
     }
 
     const json = await res.json()
-    return json.data
+    return json.data.reverse()
 }

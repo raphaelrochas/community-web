@@ -1,0 +1,59 @@
+:root {
+    --background-color: #151517;
+    --input-background-color: #2c2c2e;
+    --section-background-color: #2f3225;
+
+    --text-color: #f1f1f1;
+    --text-input-color: #e4dcdc;
+    --button-color: #aaadae;
+
+    --border-radius: 10px;
+
+    button{
+        background-color: #525455;
+        font-size: small;
+        font-weight: bold;
+        color: var(--button-color);
+        border: 1px solid black;
+        border-radius: var(--border-radius);
+    }
+
+    section {
+        width: 85%;
+        display: flex;
+        background-color: var(--section-background-color);
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        border: 2px solid white ;
+        border-radius: 10px;
+    }
+
+
+    section input, textarea {
+        width: 50%;
+        font-style: italic;
+        font-size: 1rem;
+        color: var(--text-input-color);
+        border-radius: 10px;
+        background-color:var(--input-background-color);
+        max-width: 70rem;
+    }
+
+    @media (max-width: 300px) {
+        section input {
+            font-size: 0.6rem;
+        }
+    }
+}
+
+
+html {
+    background-color: var(--background-color);
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    height: 100vh;
+}
+
+
+

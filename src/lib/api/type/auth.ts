@@ -5,7 +5,7 @@ export type AuthDTO = {
 
 export type AuthDTOResp = {
     username: string,
-    id: string,
+    user_id: string,
 }
 
 export type User = {

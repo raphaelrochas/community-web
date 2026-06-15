@@ -16,7 +16,7 @@ export async function register(input: AuthDTO): Promise<AuthDTOResp>  {
     }
 
     const data: AuthDTOResp =  await res.json()
-    userStore.setUser({userID: data.id, username: data.username })
+    userStore.setUser({userID: data.user_id, username: data.username })
     return data;
 }
 
@@ -34,6 +34,6 @@ export async function login(input: AuthDTO): Promise<AuthDTOResp>  {
     }
 
     const data: AuthDTOResp = await res.json()
-    userStore.setUser({userID: data.id, username: data.username})
+    userStore.setUser({userID: data.user_id, username: data.username})
     return data
 }

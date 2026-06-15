@@ -5,6 +5,7 @@ export type AddRoomDTOResp = {
 
 export type CreateRoomDTO = {
     name: string,
+    password: string,
 }
 
 export type RoomDTOResp = {
@@ -12,7 +13,8 @@ export type RoomDTOResp = {
     name: string,
     members: number, 
     created_at: string,
-    is_joined: boolean
+    is_joined: boolean,
+    is_public: boolean,
 }
 
 export type MessageDTO = {
@@ -24,5 +26,10 @@ export type MessageDTOResp = {
     content: string,
     sender_username: string,
     created_at: string,
+}
+
+export type JoinRoomDTO = {
+    room_id: string,
+    password: string,
 }
 

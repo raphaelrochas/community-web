@@ -36,7 +36,7 @@ function createUserStore() {
             }
 
             const data = await resp.json()
-            setUser({userID: data.id, username: data.username})
+            setUser({userID: data.user_id, username: data.username})
         } catch {
             deleteUser()
         }

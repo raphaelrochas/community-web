@@ -1,5 +1,5 @@
 import { writable, derived } from "svelte/store";
-import type { RoomDTOResp } from "../lib/api/type/chat";
+import type { JoinRoomDTO, RoomDTOResp } from "../lib/api/type/chat";
 import { API_URL } from "../lib/config";
 import { getRoom } from "../lib/api/http/chat";
 
@@ -18,6 +18,10 @@ function createRoomStore() {
         page: 0
     })
 
+    function joinedRooms(room: JoinRoomDTO) {
+        update(state => ({...state, rooms: state.rooms.map(r => r.id === room.room_id ? {...r, is_joined: true} : r)}))
+    }
+
     async function fetchRooms(page: number = 0) {
         update(state => ({...state, isLoading: true, error: null}))
 
@@ -28,7 +32,7 @@ function createRoomStore() {
             update(state => ({...state, isLoading: false, error: "failed to fetch the rooms"}))
         }
     }
-    return {subscribe, fetchRooms}
+    return {subscribe, fetchRooms, joinedRooms}
 }
 
 export const roomStore = createRoomStore()
